@@ -1,21 +1,21 @@
 //https://www.codingame.com/training/easy/distributing-candy
 #include <stdlib.h>
 #include <stdio.h>
-#include <string.h>
 #include <stdbool.h>
 #include <limits.h>
+#include <inttypes.h>
 
 
-void sort(int array[], int lenght);
-int findMinDiff(int array[], int lenght, int numbers);
+void sort(int32_t array[], int32_t lenght);
+int32_t findMinDiff(int32_t array[], int32_t lenght, int32_t numbers);
 
 int main(){
-    int n, m;
+    int32_t n, m;
     scanf("%d%d", &n, &m);
-    
-    int* amount = calloc(n, sizeof(int));
-    for (int i = 0; i < n; i++) {
-        int x;
+
+    int32_t* amount = calloc(n, sizeof(int32_t));
+    for (int32_t i = 0; i < n; i++) {
+        int32_t x;
         scanf("%d", &x);
         amount[i] = x;
     }
@@ -27,13 +27,13 @@ int main(){
 }
 
 //BubbleSort
-void sort(int array[], int lenght){
+void sort(int32_t array[], int32_t lenght){
     bool swapped = false;
     do {
         swapped = false;
-        for(int i = 0; i < lenght - 1; i++){
+        for(int32_t i = 0; i < lenght - 1; i++){
             if(array[i] > array[i+1]){
-                int temp = array[i];
+                int32_t temp = array[i];
                 array[i] = array[i+1];
                 array[i+1] = temp;
                 swapped = true;
@@ -42,10 +42,10 @@ void sort(int array[], int lenght){
     }while(swapped);
 }
 
-int findMinDiff(int amount[], int length, int numbers) {
-    int smallest = INT_MAX;
-    for (int i = 0; (i + numbers) < length; i++) {
-        int diff = amount[i + numbers] - amount[i];
+int32_t findMinDiff(int32_t amount[], int32_t length, int32_t numbers) {
+    int32_t smallest = INT_MAX;
+    for (int32_t i = 0; (i + numbers) < length; i++) {
+        int32_t diff = amount[i + numbers] - amount[i];
         if (diff < smallest) {
             smallest = diff;
         }

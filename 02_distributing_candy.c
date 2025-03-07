@@ -6,7 +6,7 @@
 #include <inttypes.h>
 
 
-void sort(int32_t array[], int32_t lenght);
+void bubbleSort(int32_t array[], int32_t lenght);
 int32_t findMinDiff(int32_t array[], int32_t lenght, int32_t numbers);
 
 int main(){
@@ -21,13 +21,14 @@ int main(){
     }
 
     //Evtl. qsort() von stdlib.h verwenden
-    sort(amount, n);    
+    bubbleSort(amount, n);    
     printf("%d", findMinDiff(amount, n, m-1));
+    free(amount);
     return 0;
 }
 
 //BubbleSort
-void sort(int32_t array[], int32_t lenght){
+void bubbleSort(int32_t array[], int32_t lenght){
     bool swapped = false;
     do {
         swapped = false;

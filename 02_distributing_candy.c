@@ -27,7 +27,6 @@ int main(){
     return 0;
 }
 
-//BubbleSort
 void bubbleSort(int32_t array[], int32_t lenght){
     bool swapped = false;
     do {

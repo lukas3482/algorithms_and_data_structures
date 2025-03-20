@@ -3,8 +3,8 @@
 #include <math.h>
 
 int main(void){
-    int a = 26;
-    int b = 35;
+    int a = 1;
+    int b = 9;
 
     int count = 0;
     for(int i = a; i <= b; i++){

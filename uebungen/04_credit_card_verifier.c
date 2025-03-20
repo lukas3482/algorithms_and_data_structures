@@ -35,7 +35,6 @@ bool verify(const char *card) {
     return sum % 10 == 0;
 }
 
-
 int main(){
     int n;
     scanf("%d", &n); fgetc(stdin);

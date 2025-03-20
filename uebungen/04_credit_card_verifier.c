@@ -9,7 +9,7 @@ int32_t convertCharToInt(char c){
     return c - '0';
 }
 
-char *removeSpaces(const char *card) {
+char *removeSpaces(char *card) {
     char* newCard = calloc(17, sizeof(char));
     int newIndex = 0;
     for (int i = 0; card[i] != '\0'; ++i) {
@@ -21,7 +21,7 @@ char *removeSpaces(const char *card) {
     return newCard;
 }
 
-bool verify(const char *card) {
+bool verify(char *card) {
     int32_t sum = 0;
     for (int i = 0; i < 16; i++) {
         int digit = convertCharToInt(card[15 - i]);

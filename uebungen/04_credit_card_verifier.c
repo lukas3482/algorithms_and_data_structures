@@ -1,7 +1,6 @@
 //https://www.codingame.com/ide/puzzle/credit-card-verifier-luhns-algorithm
 #include <stdlib.h>
 #include <stdio.h>
-#include <string.h>
 #include <stdbool.h>
 #include <inttypes.h>
 

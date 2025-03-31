@@ -1,38 +1,34 @@
-//https://www.codingame.com/ide/puzzle/longest-increasing-subsequence
 #include <stdlib.h>
 #include <stdio.h>
 #include <string.h>
 #include <stdbool.h>
-#include <inttypes.h>
+
 
 int main(){
     int n;
     scanf("%d", &n);
-    int32_t* arr = calloc(n, sizeof(int32_t));
+    int arr[n];
     for (int i = 0; i < n; i++) {
-        int p;
-        scanf("%d", &p);
-        arr[i] = p;
+        scanf("%d", &arr[i]);
     }
 
-    int dp[n];
-    for (int i = 0; i < n; i++) {
-        dp[i] = 1;
-    }
+    int lis[n];
+    for (int i = 0; i < n; i++)
+        lis[i] = 1;
 
-    for (int i = 1; i < n; i++) {
+    for (int i = 0; i < n; i++) {
         for (int j = 0; j < i; j++) {
-            if (arr[i] > arr[j] && dp[i] < dp[j] + 1) {
-                dp[i] = dp[j] + 1;
+            if (arr[i] > arr[j] && lis[i] < lis[j] + 1) {
+                lis[i] = lis[j] + 1;
             }
         }
     }
 
-    int max = dp[0];
-    for (int i = 1; i < n; i++) {
-        if (dp[i] > max) {
-            max = dp[i];
-        }
+    // Finde das Maximum
+    int max = 0;
+    for (int i = 0; i < n; i++) {
+        if (lis[i] > max)
+            max = lis[i];
     }
 
     printf("%d\n", max);

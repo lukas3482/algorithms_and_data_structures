@@ -19,12 +19,12 @@ double calcVol(double radius) {
     return (4.0 / 3.0) * M_PI * pow(radius, 3);
 }
 
-double calcDensity(double masse, double volumen) {
-    return masse / volumen;
+double calcDensity(double mass, double volume) {
+    return mass / volume;
 }
 
-double calcRochLimit(double radiusAlice, double dichteAlice, double dichtePlanet) {
-    return radiusAlice * cbrt((2.0 * dichteAlice) / dichtePlanet);
+double calcRochLimit(double radiusAlice, double densityAlice, double densityPlanet) {
+    return radiusAlice * cbrt((2.0 * densityAlice) / densityPlanet);
 }
 
 int main(){
@@ -34,20 +34,11 @@ int main(){
     struct Planet alice = {0};
     struct Planet *planets = calloc(N, sizeof(struct Planet));
     for (int i = 0; i < N; i++) {
-        char name[101];
-        double radius, mass, distance;
-
-        scanf("%100s", name);
-        scanf("%lf %lf %lf", &radius, &mass, &distance);
-
         struct Planet planet;
-        strcpy(planet.name, name);
-        planet.radius = radius;
-        planet.mass = mass;
-        planet.distance = distance;
-        planet.density = calcDensity(planet.mass, calcVol(planet.radius));
 
-        if(strcmp(name, "Alice") == 0){
+        scanf("%100s %lf %lf %lf", planet.name, &planet.radius, &planet.mass, &planet.distance);
+        planet.density = calcDensity(planet.mass, calcVol(planet.radius));
+        if(strcmp(planet.name, "Alice") == 0){
             alice = planet;
         }
 

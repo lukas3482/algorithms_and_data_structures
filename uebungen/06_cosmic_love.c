@@ -37,7 +37,7 @@ int main(){
         char name[101];
         double radius, mass, distance;
 
-        scanf("%100s", name);
+        scanf("%101s", name);
         scanf("%lf %lf %lf", &radius, &mass, &distance);
 
         struct Planet planet;

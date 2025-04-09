@@ -35,8 +35,6 @@ void getPrimeNumbers(bool* isNotPrime, int32_t to){
     isNotPrime[1] = true;
 
     int32_t max = sqrt(to);
-    if(max < 10)
-        max = to;
     for(int i = 2; i < max; i++){
         if(!isNotPrime[i]){
             for(int j = i*i; j < to; j += i){

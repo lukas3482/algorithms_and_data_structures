@@ -13,7 +13,6 @@
 #define MAX_N 100
 #define MAX_WORD_LEN 40
 
-//Richtungen:  ↓     ↑     →     ←    ↘     ↖     ↙     ↗
 int32_t dx[8] = {  0,    0,    1,   -1,    1,   -1,   -1,    1 };
 int32_t dy[8] = {  1,   -1,    0,    0,    1,   -1,    1,   -1 };
 
@@ -36,7 +35,6 @@ bool findWord(char* word) {
                     ny += dy[d];
                 }
                 if (i == len) {
-                    // Wort gefunden, markiere Buchstaben als benutzt
                     nx = x;
                     ny = y;
                     for (i = 0; i < len; i++) {
@@ -67,12 +65,10 @@ int main()
 
     memset(used, 0, sizeof(used));
 
-    // Suche alle Wörter
     for (int32_t i = 0; i < n; i++) {
         findWord(words[i]);
     }
 
-    // Sammle alle unbenutzten Buchstaben
     char secretWord[1601];
     int pos = 0;
     for (int32_t y = 0; y < h; y++) {

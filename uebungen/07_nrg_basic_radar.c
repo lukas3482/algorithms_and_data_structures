@@ -16,28 +16,11 @@ struct Car {
 };
 
 struct Car cars[MAX_CARS];
-int carCount  = 0;
+int carCount;
 
-int getCarIndexByPlate(char* plate){
-    for(int i = 0; i < carCount; i++){
-        if(strcmp(cars[i].plate, plate) == 0){
-            return i;
-        }
-    }
-    return -1;
-}
-
-int calcSpeed(struct Car car){
-    double timeDiff = (double)(car.timestamp2 - car.timestamp1);
-    double speed = DISTANCE / (timeDiff / 1000 / 60 / 60);
-    return (int)(speed);
-}
-
-int compareCarsByPlate(const void* a, const void* b) {
-    struct Car* carA = (struct Car*)a;
-    struct Car* carB = (struct Car*)b;
-    return strcmp(carA->plate, carB->plate);
-}
+int getCarIndexByPlate(char* plate);
+int calcSpeed(struct Car car);
+int compareCarsByPlate(const void* a, const void* b);
 
 int main(){
     int N;
@@ -72,4 +55,25 @@ int main(){
         free(cars[i].plate);
     }
     return 0;
+}
+
+int getCarIndexByPlate(char* plate){
+    for(int i = 0; i < carCount; i++){
+        if(strcmp(cars[i].plate, plate) == 0){
+            return i;
+        }
+    }
+    return -1;
+}
+
+int calcSpeed(struct Car car){
+    double timeDiff = (double)(car.timestamp2 - car.timestamp1);
+    double speed = DISTANCE / (timeDiff / 1000 / 60 / 60);
+    return (int)(speed);
+}
+
+int compareCarsByPlate(const void* a, const void* b) {
+    struct Car* carA = (struct Car*)a;
+    struct Car* carB = (struct Car*)b;
+    return strcmp(carA->plate, carB->plate);
 }

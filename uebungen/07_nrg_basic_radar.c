@@ -6,20 +6,20 @@
 #include <string.h>
 #include <stdbool.h>
 
-const int DISTANCE = 13;
 #define MAX_CARS 1000
+const int DISTANCE = 13;
 
 struct Car {
     char *plate;
     long long timestamp1;
     long long timestamp2;
-} Car;
+};
 
 struct Car cars[MAX_CARS];
-int currentCar = 0;
+int carCount  = 0;
 
 int getCarIndexByPlate(char* plate){
-    for(int i = 0; i < currentCar; i++){
+    for(int i = 0; i < carCount; i++){
         if(strcmp(cars[i].plate, plate) == 0){
             return i;
         }
@@ -48,27 +48,27 @@ int main(){
         char radarname[7];
         long long timestamp;
         scanf("%s%s%lld", plate, radarname, &timestamp);
+
         if(strcmp(radarname, "A21-42") == 0){
-            cars[currentCar].plate = strdup(plate);
-            cars[currentCar].timestamp1 = timestamp;
-            currentCar++;
+            cars[carCount].plate = strdup(plate);
+            cars[carCount].timestamp1 = timestamp;
+            carCount++;
         }else {
             int index = getCarIndexByPlate(plate);
             cars[index].timestamp2 = timestamp;
         }
     }
 
-    qsort(cars, currentCar, sizeof(struct Car), compareCarsByPlate);
-    for(int i = 0; i < currentCar; i++){
+    qsort(cars, carCount, sizeof(struct Car), compareCarsByPlate);
+    for(int i = 0; i < carCount; i++){
         struct Car car = cars[i];
         int  speed = calcSpeed(car);
         if(speed > 130){
             printf("%s %d\n", car.plate, speed);
         }
-
     }
 
-    for (int i = 0; i < currentCar; i++) {
+    for (int i = 0; i < carCount; i++) {
         free(cars[i].plate);
     }
     return 0;

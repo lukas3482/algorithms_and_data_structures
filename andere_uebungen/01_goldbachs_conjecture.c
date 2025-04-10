@@ -9,7 +9,7 @@
 
 int32_t mMax = 1000000;
 
-void getPrimeNumbers(bool* isNotPrime, int32_t to);
+void calcNonPrimeNumbers(bool* isNotPrime, int32_t to);
 int32_t checkForSums(bool* noPrimes, int32_t number);
 
 int main(){
@@ -17,7 +17,7 @@ int main(){
     scanf("%d", &n);
 
     bool* noPrimes = calloc(mMax + 1, sizeof(bool));
-    getPrimeNumbers(noPrimes, mMax + 1);
+    calcNonPrimeNumbers(noPrimes, mMax + 1);
 
     for (int i = 0; i < n; i++) {
         int m;
@@ -29,7 +29,7 @@ int main(){
     return 0;
 }
 
-void getPrimeNumbers(bool* isNotPrime, int32_t to){
+void calcNonPrimeNumbers(bool* isNotPrime, int32_t to){
     isNotPrime[0] = true;
     isNotPrime[1] = true;
 

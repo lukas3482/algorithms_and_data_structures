@@ -16,7 +16,7 @@ int32_t h, w;
 char grid[MAX][MAX + 1];
 bool used[MAX][MAX];
 
-bool searchWord(const char* word) {
+void searchWord(const char* word) {
     int lenght = strlen(word);
     for (int y = 0; y < h; y++) {
         for (int x = 0; x < w; x++) {
@@ -40,12 +40,11 @@ bool searchWord(const char* word) {
                         nx += dx[d];
                         ny += dy[d];
                     }
-                    return true;
+                    return;
                 }
             }
         }
     }
-    return false;
 }
 
 int main(void){
@@ -73,7 +72,8 @@ int main(void){
     for (int y = 0; y < h; y++) {
         for (int x = 0; x < w; x++) {
             if (!used[y][x]) {
-                hiddenWord[pos++] = grid[y][x];
+                hiddenWord[pos] = grid[y][x];
+                pos++;
             }
         }
     }

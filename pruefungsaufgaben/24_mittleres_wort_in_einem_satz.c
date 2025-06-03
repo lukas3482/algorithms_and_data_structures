@@ -39,7 +39,7 @@ int main(void){
     }else{
         printf("%s", strings[count / 2]);
     }
-    
+
     for(int i = 0; i < count; i++){
         free(strings[i]);
     }
